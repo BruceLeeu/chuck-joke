@@ -6,6 +6,11 @@
   @for (joke of jokes(); track $index) {
   <li class="joke">
     <p class="joke__text">{{joke.value}}</p>
+    <div class="joke__categories">
+      @for (category of joke.categories; track $index) {
+      <div>{{category}}</div>
+      }
+    </div>
     <span class="joke__date"
       >{{joke.created_at | date: 'yyyy-MM-dd HH:mm:ss'}}</span
     >
