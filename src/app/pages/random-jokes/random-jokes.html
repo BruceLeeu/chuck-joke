@@ -1,5 +1,8 @@
 <ul class="jokes-container">
   <h2>Random jokes</h2>
+  <button (click)="toggleTimer()">
+    Timer is {{timerActive() ? 'on' : 'off'}}
+  </button>
   @for (joke of jokes(); track $index) {
   <li class="joke">
     <p class="joke__text">{{joke.value}}</p>
