@@ -30,7 +30,13 @@ export class RandomJokes implements OnInit {
       } else {
         this.timer = setInterval(() => {
           this.jokes.update((previous) => {
-            previous.shift();
+            let oldestJokeIndex = 0;
+            previous.forEach((joke, index) => {
+              if (joke.created_at < previous[oldestJokeIndex].created_at) {
+                oldestJokeIndex = index;
+              }
+            });
+            previous.splice(oldestJokeIndex, 1);
             return previous;
           });
           this.processJokes(this.jokeService.fetchJokes(1));
