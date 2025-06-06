@@ -57,3 +57,12 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+## Running the app form Docker image
+
+If you have Docker installed, you can run this app in two simple commands:
+
+1. `docker pull ghcr.io/bruceleeu/chuck-joke:latest` (or replace `latest` with your desired version tag)
+2. `docker run --name chuck-joke -p 3000:8080 -d ghcr.io/bruceleeu/chuck-joke`
+
+This will pull the latest image from the repo and serve the content on `localhost:3000`
