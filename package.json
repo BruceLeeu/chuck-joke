@@ -1,6 +1,10 @@
 {
   "name": "@BruceLeeu/chuck-joke",
   "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BruceLeeu/chuck-joke.git"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -8,7 +12,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test --no-watch --no-progress --code-coverage --browsers=ChromeHeadlessCI"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular/common": "^20.0.0",
     "@angular/compiler": "^20.0.0",
