@@ -1,19 +1,29 @@
-FROM nginxinc/nginx-unprivileged:1.25-alpine3.18
+### STAGE 1: Build ###
+FROM node:lts-alpine AS build
 
-# switch to root user to prepare the image
-USER root
-RUN nginxPackages="Headers More"
+#### make the 'app' folder the current working directory
+WORKDIR /usr/src/app
+#### copy both 'package.json' and 'package-lock.json' (if available)
+COPY package*.json ./
 
-# copy the build output
-COPY dist/chuck-joke/browser /usr/share/nginx/html
-COPY nginx_default.conf /etc/nginx/conf.d/default.conf
+#### install angular cli
+RUN npm install -g @angular/cli
+#### install project dependencies
+RUN npm install
 
-# set directory permissions for nginx user (Uncomment when assets are used)
+#### copy everything
+COPY . .
 
-# RUN chown -R nginx:nginx /usr/share/nginx/html/assets/
+#### generate build --prod
+RUN npm run build --prod
 
-# switch to non-root user
+### STAGE 2: Run with nginx ###
+FROM nginxinc/nginx-unprivileged
 
-USER nginx
+#### copy nginx conf
+COPY ./nginx_default.conf /etc/nginx/conf.d/default.conf
 
-CMD ["/bin/sh",  "-c",  "exec nginx -g 'daemon off;'"]
+#### copy artifact build from the 'build environment'
+COPY --from=build /usr/src/app/dist/chuck-joke/browser /usr/share/nginx/html
+
+CMD ["nginx", "-g", "daemon off;"]
