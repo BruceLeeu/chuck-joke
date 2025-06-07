@@ -10,7 +10,10 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test --no-watch --no-progress --code-coverage --browsers=ChromeHeadlessCI"
+    "test": "ng test --no-watch --no-progress --code-coverage --browsers=ChromeHeadlessCI",
+    "prettier-check": "npx prettier --check .",
+    "prettier-fix": "npx prettier --write .",
+    "prepare": "husky"
   },
   "private": false,
   "dependencies": {
@@ -29,6 +32,7 @@
     "@angular/cli": "^20.0.1",
     "@angular/compiler-cli": "^20.0.0",
     "@types/jasmine": "~5.1.0",
+    "husky": "^9.1.7",
     "jasmine-core": "~5.7.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
