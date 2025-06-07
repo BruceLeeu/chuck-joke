@@ -1,11 +1,18 @@
 <li class="joke">
-  <p class="joke__text">{{jokeData().value}}</p>
-  <div class="joke__categories">
-    @for (category of jokeData().categories; track $index) {
-    <div>{{category}}</div>
-    }
+  <div class="description">
+    <p class="joke__text">{{jokeData().value}}</p>
+    <div class="joke__categories">
+      @for (category of jokeData().categories; track $index) {
+      <div>{{category}}</div>
+      }
+    </div>
+    <span class="joke__date"
+      >{{jokeData().created_at | date: 'yyyy-MM-dd HH:mm:ss'}}</span
+    >
   </div>
-  <span class="joke__date"
-    >{{jokeData().created_at | date: 'yyyy-MM-dd HH:mm:ss'}}</span
-  >
+  <div class="action">
+    <button (click)="toggleFavourite(jokeData().id)">
+      {{isFavourite(jokeData().id) ? 'Remove from' : 'Add to'}} favourites
+    </button>
+  </div>
 </li>

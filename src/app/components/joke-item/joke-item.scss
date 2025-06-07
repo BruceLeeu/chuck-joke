@@ -1,4 +1,7 @@
 .joke {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
   border: 1px dotted black;
   padding: 0.5rem;
   animation: 300ms ease-in-out slide;
@@ -11,10 +14,28 @@
   &__categories {
     color: red;
   }
+
+  .action {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    button {
+      min-width: max-content;
+      width: 100%;
+      cursor: pointer;
+    }
+  }
 }
 
 p {
   margin: 0;
+}
+
+@media screen and (max-width: 600px) {
+  .joke {
+    flex-direction: column;
+  }
 }
 
 @keyframes slide {
