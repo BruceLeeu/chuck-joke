@@ -1,0 +1,12 @@
+nav {
+  display: flex;
+  gap: 1rem;
+
+  a {
+    cursor: pointer;
+
+    &.route-active {
+      color: red;
+    }
+  }
+}
