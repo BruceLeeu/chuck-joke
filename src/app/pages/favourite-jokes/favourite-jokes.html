@@ -1,1 +1,7 @@
-<p>favourite-jokes works!</p>
+<ul class="jokes-container">
+  <h2>Favourite jokes ⭐️</h2>
+  @for (favouriteJoke of favouritesAsArray(favouritesService.favourites());
+  track $index) {
+  <app-joke-item [jokeData]="favouriteJoke" />
+  } @empty { No favourites yet 😕 }
+</ul>

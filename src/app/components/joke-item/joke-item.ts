@@ -14,11 +14,11 @@ export class JokeItem {
 
   constructor(private favouritesService: FavouritesService) {}
 
-  public toggleFavourite(id: string) {
-    if (this.isFavourite(id)) {
-      this.favouritesService.removeFavourite(id);
+  public toggleFavourite(joke: Joke) {
+    if (this.isFavourite(joke.id)) {
+      this.favouritesService.removeFavourite(joke.id);
     } else {
-      this.favouritesService.addFavourite(id);
+      this.favouritesService.addFavourite(joke);
     }
   }
 

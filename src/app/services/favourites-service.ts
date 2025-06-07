@@ -1,5 +1,6 @@
 import { Injectable, signal, WritableSignal } from '@angular/core';
 import { JokeMap, StorageService } from './storage-service';
+import { Joke } from '../models/joke.model';
 
 @Injectable({
   providedIn: 'root',
@@ -11,10 +12,10 @@ export class FavouritesService {
     this.cachedFavourites = signal(this.store.getFavouritesFromStorage());
   }
 
-  public addFavourite(id: string) {
-    if (!this.cachedFavourites()[id]) {
+  public addFavourite(joke: Joke) {
+    if (!this.cachedFavourites()[joke.id]) {
       this.cachedFavourites.update((prev) => {
-        prev[id] = new Date().toISOString();
+        prev[joke.id] = joke;
         this.store.saveFavouritesToStorage(prev);
         return prev;
       });
@@ -33,5 +34,9 @@ export class FavouritesService {
 
   public isFavourite(id: string): boolean {
     return !!this.cachedFavourites()[id];
+  }
+
+  public get favourites() {
+    return this.cachedFavourites;
   }
 }

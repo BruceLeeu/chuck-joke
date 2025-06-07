@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Joke } from '../models/joke.model';
 
-export type JokeMap = Partial<Record<string, string>>;
+export type JokeMap = Partial<Record<string, Joke>>;
 
 @Injectable({
   providedIn: 'root',
