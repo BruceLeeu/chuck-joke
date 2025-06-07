@@ -4,8 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-favourite-jokes',
   imports: [],
   templateUrl: './favourite-jokes.html',
-  styleUrl: './favourite-jokes.scss'
+  styleUrl: './favourite-jokes.scss',
 })
-export class FavouriteJokes {
-
-}
+export class FavouriteJokes {}
