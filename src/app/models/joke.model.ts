@@ -9,7 +9,8 @@
  * "id": "0JqamoTkR_GK0DYbigQ5cw",
  * "updated_at": "2020-01-05 13:42:29.855523",
  * "url": "https://api.chucknorris.io/jokes/0JqamoTkR_GK0DYbigQ5cw",
- * "value": "Arnold Schwarzenegger always says he'll be back. But Chuck Norris always handles things the first time"}
+ * "value": "Arnold Schwarzenegger always says he'll be back. But Chuck Norris always handles things the first time"
+ * }
  * ```
  *
  */
