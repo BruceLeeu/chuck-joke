@@ -1,0 +1,29 @@
+.joke {
+  border: 1px dotted black;
+  padding: 0.5rem;
+  animation: 300ms ease-in-out slide;
+  list-style: none;
+
+  &__date {
+    color: gray;
+    font-size: 0.75rem;
+  }
+  &__categories {
+    color: red;
+  }
+}
+
+p {
+  margin: 0;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
