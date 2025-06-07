@@ -1,12 +1,12 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { JokeService } from '../../services/joke-service';
 import { Joke } from '../../models/joke.model';
-import { DatePipe } from '@angular/common';
 import { Observable } from 'rxjs/internal/Observable';
+import { JokeItem } from '../../components/joke-item/joke-item';
 
 @Component({
   selector: 'app-random-jokes',
-  imports: [DatePipe],
+  imports: [JokeItem],
   templateUrl: './random-jokes.html',
   styleUrl: './random-jokes.scss',
 })
@@ -19,7 +19,7 @@ export class RandomJokes implements OnInit {
   constructor(private readonly jokeService: JokeService) {}
 
   public ngOnInit() {
-    this.processJokes(this.jokeService.fetchJokes(10));
+    this.processJokes(this.jokeService.fetchJoke(10));
   }
 
   public toggleTimer() {
@@ -29,17 +29,8 @@ export class RandomJokes implements OnInit {
         this.timer = undefined;
       } else {
         this.timer = setInterval(() => {
-          this.jokes.update((previous) => {
-            let oldestJokeIndex = 0;
-            previous.forEach((joke, index) => {
-              if (joke.created_at < previous[oldestJokeIndex].created_at) {
-                oldestJokeIndex = index;
-              }
-            });
-            previous.splice(oldestJokeIndex, 1);
-            return previous;
-          });
-          this.processJokes(this.jokeService.fetchJokes(1));
+          this.removeOldestJoke();
+          this.processJokes(this.jokeService.fetchJoke());
         }, 5000);
       }
       return !active;
@@ -55,6 +46,19 @@ export class RandomJokes implements OnInit {
         console.warn(err);
         // TODO: Error handling
       },
+    });
+  }
+
+  private removeOldestJoke() {
+    this.jokes.update((previous) => {
+      let oldestJokeIndex = 0;
+      previous.forEach((joke, index) => {
+        if (joke.created_at < previous[oldestJokeIndex].created_at) {
+          oldestJokeIndex = index;
+        }
+      });
+      previous.splice(oldestJokeIndex, 1);
+      return previous;
     });
   }
 }
