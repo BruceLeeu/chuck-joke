@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100;1,100&display=swap");
 
 @font-face {
   font-family: "ChuckNorris";
@@ -12,6 +13,11 @@
   --chuck-orange-opaque: rgba(241, 90, 35, 0.2);
   --chuck-blue: #29abe2;
   --chuck-blue-opaque: rgba(41, 170, 226, 0.2);
+}
+
+html * {
+  font-family: "Roboto mono", "Courier New";
+  font-weight: 200;
 }
 
 a,

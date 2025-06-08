@@ -9,6 +9,7 @@ nav {
 
     &.route-active {
       color: var(--chuck-orange);
+      font-weight: 700;
     }
     &:visited:not(.route-active) {
       color: var(--chuck-blue);
