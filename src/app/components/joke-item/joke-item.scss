@@ -8,6 +8,12 @@
   animation: 300ms ease-in-out slide;
   list-style: none;
 
+  .description {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
   &__date {
     color: gray;
     font-size: 0.75rem;
