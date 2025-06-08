@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FavouriteJokes } from './favourite-jokes';
+import { mock_jokeArray, mock_jokeMap } from '../mocks/mock-data';
 
 describe('FavouriteJokes', () => {
   let component: FavouriteJokes;
@@ -18,5 +19,10 @@ describe('FavouriteJokes', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should convert JokeMap to Joke[] (Array)', () => {
+    const convertedJokes = component.favouritesAsArray(mock_jokeMap);
+    expect(convertedJokes).toEqual(mock_jokeArray);
   });
 });

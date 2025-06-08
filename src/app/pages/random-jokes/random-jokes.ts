@@ -38,7 +38,7 @@ export class RandomJokes implements OnInit {
     });
   }
 
-  public processJokes(jokeObservable: Observable<Joke>) {
+  private processJokes(jokeObservable: Observable<Joke>) {
     jokeObservable.subscribe({
       next: (joke) => {
         this.jokes.update((previous) => [...previous, joke]);
@@ -48,6 +48,7 @@ export class RandomJokes implements OnInit {
         // TODO: Error handling
       },
     });
+    return true;
   }
 
   private removeOldestJoke() {

@@ -21,4 +21,9 @@ describe('Navigation', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should render navigation routes', () => {
+    const navigation = fixture.nativeElement as HTMLElement;
+    expect(navigation.querySelectorAll('a').length).toBe(2);
+  });
 });
