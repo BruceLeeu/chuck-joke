@@ -1,8 +1,11 @@
 <ul class="jokes-container">
-  <h2>Random jokes</h2>
-  <button (click)="toggleTimer()">
-    Timer is {{timerActive() ? 'on' : 'off'}}
-  </button>
+  <h1>Random jokes 🎲</h1>
+  <div class="timer-container">
+    <button (click)="toggleTimer()">
+      <div class="timer" [ngClass]="{'active': timerActive()}">⧖</div>
+      <span>Timer is {{timerActive() ? 'on' : 'off'}}</span>
+    </button>
+  </div>
   @for (joke of jokes(); track $index) {
   <app-joke-item [jokeData]="joke" />
   } @empty { loading... }

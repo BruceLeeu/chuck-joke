@@ -3,16 +3,16 @@
     <p class="joke__text">{{jokeData().value}}</p>
     <div class="joke__categories">
       @for (category of jokeData().categories; track $index) {
-      <div>{{category}}</div>
+      <div class="category-pill">{{category}}</div>
       }
     </div>
-    <span class="joke__date"
-      >{{jokeData().created_at | date: 'yyyy-MM-dd HH:mm:ss'}}</span
-    >
+    <span class="joke__date"> {{jokeData().created_at | date: 'yyyy-MM-dd HH:mm:ss'}} </span>
   </div>
   <div class="action">
-    <button (click)="toggleFavourite(jokeData())">
-      {{isFavourite(jokeData().id) ? 'Remove from' : 'Add to'}} favourites
+    @let favourited = isFavourite(jokeData().id);
+    <button (click)="toggleFavourite(jokeData())" class="favourite" [ngClass]="{'starred': favourited}">
+      <span class="favourite__star">{{ favourited ? '★' : '☆'}}</span>
+      <span class="favourite__text">{{ favourited ? 'Remove from' : 'Add to'}} favourites</span>
     </button>
   </div>
 </li>

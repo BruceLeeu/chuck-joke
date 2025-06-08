@@ -1,7 +1,6 @@
 <ul class="jokes-container">
-  <h2>Favourite jokes ⭐️</h2>
-  @for (favouriteJoke of favouritesAsArray(favouritesService.favourites());
-  track $index) {
+  <h1>Favourite jokes ⭐️</h1>
+  @for (favouriteJoke of favouritesAsArray(favouritesService.favourites()); track $index) {
   <app-joke-item [jokeData]="favouriteJoke" />
   } @empty { No favourites yet 😕 }
 </ul>

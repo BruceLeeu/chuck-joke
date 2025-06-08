@@ -3,10 +3,13 @@ nav {
   gap: 1rem;
 
   a {
-    cursor: pointer;
+    font-family: "Courier New", Courier, monospace;
 
     &.route-active {
-      color: red;
+      color: var(--chuck-orange);
+    }
+    &:visited:not(.route-active) {
+      color: var(--chuck-blue);
     }
   }
 }

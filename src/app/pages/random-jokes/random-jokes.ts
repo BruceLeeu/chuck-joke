@@ -3,10 +3,11 @@ import { JokeService } from '../../services/joke-service';
 import { Joke } from '../../models/joke.model';
 import { Observable } from 'rxjs/internal/Observable';
 import { JokeItem } from '../../components/joke-item/joke-item';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-random-jokes',
-  imports: [JokeItem],
+  imports: [JokeItem, NgClass],
   templateUrl: './random-jokes.html',
   styleUrl: './random-jokes.scss',
 })

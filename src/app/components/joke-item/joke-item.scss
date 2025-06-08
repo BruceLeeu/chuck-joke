@@ -12,7 +12,16 @@
     font-size: 0.75rem;
   }
   &__categories {
-    color: red;
+    .category-pill {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: min-content;
+      padding: 0.25rem 0.5rem;
+      border: 1px dashed var(--chuck-orange);
+      color: var(--chuck-orange);
+      border-radius: 1rem;
+    }
   }
 
   .action {
@@ -20,16 +29,41 @@
     justify-content: center;
     align-items: center;
 
-    button {
+    .favourite {
+      display: flex;
+      gap: 0.25rem;
       min-width: max-content;
       width: 100%;
-      cursor: pointer;
+      background-color: transparent;
+      border: none;
+      padding: 0.5rem;
+      border-radius: 0.25rem;
+
+      &:hover {
+        background-color: var(--chuck-blue-opaque);
+      }
+      &.starred:hover {
+        background-color: var(--chuck-orange-opaque);
+      }
+
+      &.starred {
+        .favourite__star {
+          color: var(--chuck-orange);
+        }
+      }
+
+      &__star {
+        font-size: 1.5rem;
+        color: var(--chuck-blue);
+        filter: drop-shadow(1px 1px black);
+      }
+      &__text {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
     }
   }
-}
-
-p {
-  margin: 0;
 }
 
 @media screen and (max-width: 600px) {

@@ -15,8 +15,6 @@ export class JokeService {
    * @default amount = 1
    */
   public fetchJoke(amount = 1) {
-    return this.http
-      .get<Joke>('https://api.chucknorris.io/jokes/random')
-      .pipe(repeat(amount));
+    return this.http.get<Joke>('https://api.chucknorris.io/jokes/random').pipe(repeat(amount));
   }
 }

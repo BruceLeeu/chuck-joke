@@ -1,11 +1,11 @@
 import { Component, input } from '@angular/core';
 import { Joke } from '../../models/joke.model';
-import { DatePipe } from '@angular/common';
+import { DatePipe, NgClass } from '@angular/common';
 import { FavouritesService } from '../../services/favourites-service';
 
 @Component({
   selector: 'app-joke-item',
-  imports: [DatePipe],
+  imports: [DatePipe, NgClass],
   templateUrl: './joke-item.html',
   styleUrl: './joke-item.scss',
 })
