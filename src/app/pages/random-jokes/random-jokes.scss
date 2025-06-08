@@ -6,12 +6,42 @@
     gap: 1rem;
     width: max-content;
     background-color: transparent;
-    border: none;
+    border: 1px solid transparent;
     padding: 0.5rem;
     border-radius: 0.25rem;
 
     &:hover {
-      background-color: var(--chuck-orange-opaque);
+      background-color: var(--chuck-blue-opaque);
+      box-shadow: 1px 1px black;
+    }
+    &:active {
+      border-color: var(--chuck-blue);
+    }
+
+    .timer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 2rem;
+      height: 2rem;
+      color: var(--chuck-blue);
+      filter: drop-shadow(1px 1px black);
+    }
+  }
+  &.active {
+    button {
+      .timer {
+        color: var(--chuck-orange);
+        background: conic-gradient(var(--chuck-orange) var(--percentage), transparent 0);
+        border-radius: 50%;
+        animation: timer 5s infinite linear;
+      }
+      &:hover {
+        background-color: var(--chuck-orange-opaque);
+      }
+      &:active {
+        border-color: var(--chuck-orange);
+      }
     }
   }
 }
@@ -22,24 +52,22 @@
   syntax: "<percentage>";
 }
 
-.timer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 2rem;
-  height: 2rem;
-  color: var(--chuck-orange);
-  filter: drop-shadow(1px 1px black);
-
-  &.active {
-    background: conic-gradient(var(--chuck-orange) var(--percentage), transparent 0);
-    border-radius: 50%;
-    animation: timer 5s infinite linear;
-  }
-}
-
 @keyframes timer {
   to {
     --percentage: 100%;
+  }
+}
+
+@media (pointer: coarse) {
+  .timer-container {
+    button {
+      border-color: var(--chuck-blue);
+      box-shadow: 1px 1px black;
+    }
+    &.active {
+      button {
+        border-color: var(--chuck-orange);
+      }
+    }
   }
 }

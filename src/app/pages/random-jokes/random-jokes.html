@@ -1,9 +1,9 @@
 <ul class="jokes-container">
   <h1>Random jokes 🎲</h1>
-  <div class="timer-container">
-    <button (click)="toggleTimer()">
-      <div class="timer" [ngClass]="{'active': timerActive()}">⧖</div>
-      <span>Timer is {{timerActive() ? 'on' : 'off'}}</span>
+  <div class="timer-container" [ngClass]="{'active': timerActive()}">
+    <button (click)="toggleTimer()" title="When turned on, will replace the oldest joke every 5 seconds">
+      <div class="timer">⧖</div>
+      <span>Turn timer {{timerActive() ? 'off' : 'on'}}</span>
     </button>
   </div>
   @for (joke of jokes(); track $index) {

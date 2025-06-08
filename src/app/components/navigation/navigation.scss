@@ -1,9 +1,11 @@
 nav {
   display: flex;
   gap: 1rem;
+  padding: 1rem 1rem 0 1rem;
 
   a {
     font-family: "Courier New", Courier, monospace;
+    color: var(--chuck-blue);
 
     &.route-active {
       color: var(--chuck-orange);
