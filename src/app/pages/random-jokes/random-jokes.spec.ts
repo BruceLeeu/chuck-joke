@@ -1,19 +1,15 @@
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
-
 import { RandomJokes } from './random-jokes';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { provideHttpClient } from '@angular/common/http';
-import { mock_jokeArray, mock_singleJoke } from '../mocks/mock-data';
+import { mock_jokeArray } from '../mocks/mock-data';
 import { RandomJokesPlusPrivate } from '../mocks/mock-types';
 import { JokeService } from '../../services/joke-service';
-import { of } from 'rxjs';
+import { mock_jokeService } from '../mocks/mock-classes';
 
 describe('RandomJokes', () => {
   let component: RandomJokes;
   let fixture: ComponentFixture<RandomJokes>;
-  const mock_jokeService = {
-    fetchJoke: () => of(mock_singleJoke),
-  };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -57,7 +53,7 @@ describe('RandomJokes', () => {
       'processJokes',
     ).and.callThrough();
     // Initial state (false)
-    component.jokes.set(mock_jokeArray);
+    component.jokes.set([...mock_jokeArray]);
 
     // Toggle true
     component.toggleTimer();
