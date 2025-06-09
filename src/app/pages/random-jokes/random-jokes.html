@@ -6,7 +6,11 @@
       <span>Turn timer {{timerActive() ? 'off' : 'on'}}</span>
     </button>
   </div>
-  @for (joke of jokes(); track $index) {
+  @let error = jokeFetchErrorMessage(); @if(error){
+  <span class="error-message">{{error}}</span>
+  } @for (joke of jokes(); track $index) {
   <app-joke-item [jokeData]="joke" />
-  } @empty { loading... }
+  } @empty { @if(!error){
+  <span> loading... </span>
+  } }
 </ul>

@@ -31,14 +31,12 @@ describe('RandomJokes', () => {
   });
 
   it('should toggle timer', () => {
-    // Initial state (false)
+    // Initial state = false
     expect(component?.['timerActive']()).toBeFalse();
 
-    // Toggle true
     component.toggleTimer();
     expect(component?.['timerActive']()).toBeTrue();
 
-    // Toggle back to initial state (false)
     component.toggleTimer();
     expect(component?.['timerActive']()).toBeFalse();
   });
@@ -48,19 +46,18 @@ describe('RandomJokes', () => {
       component as RandomJokesPlusPrivate,
       'removeOldestJoke',
     ).and.callThrough();
-    const processJokes = spyOn<RandomJokesPlusPrivate>(
+    const processJokesSpy = spyOn<RandomJokesPlusPrivate>(
       component as RandomJokesPlusPrivate,
       'processJokes',
     ).and.callThrough();
-    // Initial state (false)
     component.jokes.set([...mock_jokeArray]);
 
-    // Toggle true
+    // Toggle true (inital state = false)
     component.toggleTimer();
     tick(5000);
     fixture.detectChanges();
 
-    expect(processJokes).toHaveBeenCalled();
+    expect(processJokesSpy).toHaveBeenCalled();
     expect(removeOldestJokeSpy).toHaveBeenCalled();
     expect(component.jokes().length).toBe(3);
     expect(component.jokes()).not.toEqual(mock_jokeArray);

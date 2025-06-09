@@ -46,6 +46,10 @@
   }
 }
 
+.error-message {
+  color: red;
+}
+
 @property --percentage {
   initial-value: 0%;
   inherits: false;

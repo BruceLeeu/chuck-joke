@@ -13,11 +13,15 @@ import { JokeMap } from '../../services/storage-service';
 export class FavouriteJokes {
   constructor(public favouritesService: FavouritesService) {}
 
+  /**
+   * Converts a JokeMap object - containing jokes as values and their id's as keys - into an Array of its values
+   * @param jokeMap JokeMap
+   */
   public favouritesAsArray(jokeMap: JokeMap): Joke[] {
     const favouritesAsArray: Joke[] = [];
-    Object.values(jokeMap).forEach((possiblerFavourite) => {
-      if (possiblerFavourite) {
-        favouritesAsArray.push(possiblerFavourite);
+    Object.values(jokeMap).forEach((possibleFavourite) => {
+      if (possibleFavourite) {
+        favouritesAsArray.push(possibleFavourite);
       }
     });
     return favouritesAsArray;

@@ -7,8 +7,15 @@ export type JokeMap = Partial<Record<string, Joke>>;
   providedIn: 'root',
 })
 export class StorageService {
+  private FAVOURITES_KEY = 'favourites';
+
+  /**
+   * Retrieve a Map of favourited Jokes from localStorage.
+   * Also performs necessary type checks and error handling for malformed objects.
+   * @param joke The joke to favourite
+   */
   public getFavouritesFromStorage(): JokeMap {
-    const favouritesAsString = localStorage.getItem('favourites');
+    const favouritesAsString = localStorage.getItem(this.FAVOURITES_KEY);
     let parsed: unknown;
     try {
       parsed = JSON.parse(favouritesAsString ?? '{}');
@@ -25,6 +32,6 @@ export class StorageService {
   }
 
   public saveFavouritesToStorage(jokeMap: JokeMap) {
-    localStorage.setItem('favourites', JSON.stringify(jokeMap));
+    localStorage.setItem(this.FAVOURITES_KEY, JSON.stringify(jokeMap));
   }
 }

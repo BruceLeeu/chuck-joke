@@ -14,6 +14,7 @@ import { NgClass } from '@angular/common';
 export class RandomJokes implements OnInit {
   public jokes = signal<Joke[]>([]);
   public timerActive = signal(false);
+  public jokeFetchErrorMessage = signal('');
 
   private timer?: number;
 
@@ -23,6 +24,9 @@ export class RandomJokes implements OnInit {
     this.processJokes(this.jokeService.fetchJoke(10));
   }
 
+  /**
+   * Will either start - or stop - a 5 second timer that replaces the oldest joke in the list.
+   */
   public toggleTimer() {
     this.timerActive.update((active) => {
       if (active) {
@@ -38,29 +42,38 @@ export class RandomJokes implements OnInit {
     });
   }
 
+  /**
+   * Processes the observable retrieved from the JokeService.
+   * Either adds the fetched joke to the array on `next()`, or displays an appropriate error message on `error()`.
+   * @param jokeObservable The Observable that will be subscribed to.
+   */
   private processJokes(jokeObservable: Observable<Joke>) {
     jokeObservable.subscribe({
-      next: (joke) => {
-        this.jokes.update((previous) => [...previous, joke]);
+      next: (newJoke) => {
+        this.jokes.update((currentJokes) => [...currentJokes, newJoke]);
       },
       error: (err) => {
         console.warn(err);
-        // TODO: Error handling
+        this.jokeFetchErrorMessage.set('Could not fetch any (more) jokes at this moment 😢');
+        if (this.timerActive()) this.toggleTimer();
       },
     });
     return true;
   }
 
+  /**
+   * Removes the oldest joke in the array based on `created_at` timestamp
+   */
   private removeOldestJoke() {
-    this.jokes.update((previous) => {
+    this.jokes.update((jokes) => {
       let oldestJokeIndex = 0;
-      previous.forEach((joke, index) => {
-        if (joke.created_at < previous[oldestJokeIndex].created_at) {
+      jokes.forEach((joke, index) => {
+        if (joke.created_at < jokes[oldestJokeIndex].created_at) {
           oldestJokeIndex = index;
         }
       });
-      previous.splice(oldestJokeIndex, 1);
-      return previous;
+      jokes.splice(oldestJokeIndex, 1);
+      return jokes;
     });
   }
 }

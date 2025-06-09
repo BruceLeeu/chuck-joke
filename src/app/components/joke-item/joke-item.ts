@@ -14,6 +14,9 @@ export class JokeItem {
 
   constructor(private favouritesService: FavouritesService) {}
 
+  /**
+   * Will either save a joke to - or remove it from - the favourites list
+   */
   public toggleFavourite(joke: Joke) {
     if (this.isFavourite(joke.id)) {
       this.favouritesService.removeFavourite(joke.id);

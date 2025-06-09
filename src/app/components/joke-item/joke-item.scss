@@ -61,7 +61,6 @@
       &.starred:active {
         border-color: var(--chuck-orange);
       }
-
       &.starred {
         .favourite__star {
           color: var(--chuck-orange);
@@ -92,6 +91,7 @@
 }
 
 @media (pointer: coarse) {
+  // Show a border and box-shadow for touchscreen devices
   .joke {
     .action {
       .favourite {

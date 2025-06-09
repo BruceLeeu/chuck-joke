@@ -70,3 +70,14 @@ export const mock_singleJoke: Joke = {
   url: 'https://api.chucknorris.io/jokes/jqgu04prsomr9uiwbyzebq',
   value: 'For Chuck Norris, NP-Hard = O(1).',
 };
+export const mock_singleJokeAsJokeMapValue: JokeMap = {
+  jqgu04prsomr9uiwbyzebq: {
+    categories: ['dev'],
+    created_at: '2020-01-05 13:42:19.104863',
+    icon_url: 'https://api.chucknorris.io/img/avatar/chuck-norris.png',
+    id: 'jqgu04prsomr9uiwbyzebq',
+    updated_at: '2020-01-05 13:42:19.104863',
+    url: 'https://api.chucknorris.io/jokes/jqgu04prsomr9uiwbyzebq',
+    value: 'For Chuck Norris, NP-Hard = O(1).',
+  },
+};

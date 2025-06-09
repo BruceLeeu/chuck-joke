@@ -25,7 +25,7 @@ describe('FavouriteJokes', () => {
 
   it('should convert JokeMap to Joke[] (Array)', () => {
     spyOn(component, 'favouritesAsArray').and.callThrough();
-    const result = component.favouritesAsArray(mock_jokeMap);
-    expect(result).toEqual(mock_jokeArray);
+    const favourites = component.favouritesAsArray(mock_jokeMap);
+    expect(favourites).toEqual(mock_jokeArray);
   });
 });

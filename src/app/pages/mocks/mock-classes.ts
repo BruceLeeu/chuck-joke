@@ -2,9 +2,8 @@
 import { signal } from '@angular/core';
 import { mock_jokeMap, mock_singleJoke } from './mock-data';
 import { of } from 'rxjs/internal/observable/of';
-import { StorageService } from '../../services/storage-service';
 
-export const mock_storageService: StorageService = {
+export const mock_storageService = {
   getFavouritesFromStorage: () => {
     return {};
   },

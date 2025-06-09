@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { Navigation } from './navigation';
 import { provideRouter } from '@angular/router';
 
