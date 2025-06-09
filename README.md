@@ -28,3 +28,8 @@ If you have Docker installed, you can run this app in two simple commands:
 2. `docker run --name chuck-joke -p 3000:8080 -d ghcr.io/bruceleeu/chuck-joke`
 
 This will pull the latest image from the repo and serve the content on `localhost:3000`
+
+## Application in action
+
+![Random Jokes](/public/chuck-joke_screenshot_1.png "Random Jokes")
+![Favourite Jokes](/public/chuck-joke_screenshot_2.png "Favourite Jokes")
